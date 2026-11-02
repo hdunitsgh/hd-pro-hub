@@ -20,86 +20,179 @@
       --warning: #ffc107;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 15px;
       background-color: var(--bg);
       color: var(--text);
     }
 
     .container {
-      max-width: 900px;
+      max-width: 850px;
       margin: 0 auto;
       background: var(--card-bg);
-      padding: 30px;
+      padding: 24px 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.06);
     }
 
+    /* Header */
     .header {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
     .header img {
-      width: 120px;
+      width: 100px;
       height: auto;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       border-radius: 50%;
     }
     h1 {
       color: var(--primary);
-      font-size: 1.8em;
-      margin: 0 0 5px 0;
+      font-size: 1.6em;
+      margin: 0 0 4px 0;
       letter-spacing: -0.5px;
     }
     h2 {
       color: var(--text-muted);
-      font-size: 1.1em;
+      font-size: 1em;
       font-weight: normal;
-      margin-top: 0;
-      margin-bottom: 10px;
+      margin: 0;
     }
     h3 {
-      margin-top: 30px;
+      margin-top: 26px;
       color: #343a40;
       border-bottom: 2px solid var(--primary);
       padding-bottom: 6px;
-      font-size: 1.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      font-size: 1.15em;
     }
 
-    /* Asset Top Split: 70% Asset Info / 30% SNIDS Action */
+    /* Compact Search Toolbar: Flawless mobile inline flex */
+    .search-section {
+      background: #f1f5f9;
+      padding: 14px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+      margin-bottom: 20px;
+    }
+    .search-label {
+      font-size: 0.82em;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .search-row {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+      width: 100%;
+    }
+    .search-dropdown {
+      flex: 1;
+      height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #ffffff;
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 600;
+      outline: none;
+    }
+    .search-dropdown:focus {
+      border-color: var(--primary);
+    }
+    .scan-btn {
+      height: 44px;
+      padding: 0 16px;
+      background-color: #475569;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .scan-btn:hover {
+      background-color: #334155;
+    }
+
+    /* Switch asset link (shown when search is hidden) */
+    .switch-asset-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85em;
+      margin-bottom: 15px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border-radius: 4px;
+      border: 1px solid var(--border-light);
+    }
+    .switch-asset-link {
+      color: var(--primary);
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Asset Split Grid */
     .asset-split-row {
       display: grid;
       grid-template-columns: 7fr 3fr;
       gap: 16px;
       margin-bottom: 20px;
-      align-items: stretch;
     }
 
     .asset-spec-card {
       background: #fdfdfd;
       border: 1px solid var(--primary);
       border-radius: 6px;
-      padding: 18px;
+      padding: 16px;
     }
-    .asset-spec-title {
-      font-weight: bold;
-      color: var(--primary);
-      font-size: 1.15em;
+
+    /* Asset Title stacked */
+    .asset-title-block {
+      border-bottom: 1.5px solid var(--border-light);
+      padding-bottom: 10px;
       margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    }
+    .asset-label-text {
+      font-size: 1.45em;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    .asset-type-badge {
+      font-size: 0.82em;
+      color: #475569;
+      font-weight: 700;
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .details-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      font-size: 0.88em;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 0.86em;
+      margin-bottom: 14px;
     }
     .detail-item {
       background: #f8fafc;
@@ -109,18 +202,51 @@
     }
     .detail-item label {
       display: block;
-      font-size: 0.78em;
+      font-size: 0.74em;
       color: #64748b;
       font-weight: 600;
-      margin-bottom: 2px;
       text-transform: uppercase;
+      margin-bottom: 2px;
     }
     .detail-item span {
-      font-weight: bold;
+      font-weight: 700;
       color: #0f172a;
+      word-break: break-word;
     }
 
-    /* SNIDS Launch Card */
+    /* Stacked Status & PPM Block */
+    .status-stack {
+      background: #f8fafc;
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .status-group-label {
+      font-size: 0.78em;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.88em;
+    }
+    .badge-ready { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .badge-fault { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .ppm-due-text {
+      font-size: 1.05em;
+      font-weight: 800;
+      color: #1e293b;
+    }
+
+    /* SNIDS Action Box */
     .snids-card {
       background: #ffffff;
       border: 1.5px solid var(--primary);
@@ -133,28 +259,23 @@
       text-align: center;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .snids-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.15);
     }
     .snids-card img {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       object-fit: contain;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .snids-card-title {
-      font-weight: bold;
+      font-weight: 700;
       color: var(--primary);
-      font-size: 0.95em;
-      margin-bottom: 4px;
+      font-size: 0.92em;
+      margin-bottom: 3px;
     }
     .snids-card-desc {
-      font-size: 0.75em;
+      font-size: 0.74em;
       color: var(--text-muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       line-height: 1.3;
     }
     .btn-snids {
@@ -163,111 +284,65 @@
       border: none;
       border-radius: 4px;
       padding: 8px 12px;
-      font-size: 0.85em;
-      font-weight: bold;
+      font-size: 0.82em;
+      font-weight: 700;
       cursor: pointer;
       width: 100%;
     }
 
-    /* Status & PPM Banner */
-    .status-strip {
-      background: #f8fafc;
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      padding: 12px 16px;
-      margin-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.9em;
-    }
-    .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 0.85em;
-    }
-    .badge-ready { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-    .badge-fault { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-    .badge-pending { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
-
     /* Form Fields */
-    label {
+    label.field-label {
       display: block;
-      margin-top: 15px;
+      margin-top: 14px;
       margin-bottom: 5px;
-      font-weight: bold;
-      font-size: 0.9em;
+      font-weight: 700;
+      font-size: 0.88em;
     }
-    input[type="text"], input[type="email"], select, textarea {
+    input[type="text"], input[type="email"], select.form-control, textarea {
       width: 100%;
-      padding: 10px;
+      padding: 10px 12px;
       margin-bottom: 10px;
       border: 1px solid var(--border);
-      border-radius: 4px;
-      box-sizing: border-box;
+      border-radius: 5px;
       font-size: 0.95em;
       font-family: inherit;
+      background: #ffffff;
     }
     textarea {
       resize: vertical;
-      min-height: 80px;
+      min-height: 75px;
     }
     .char-counter {
       text-align: right;
       font-size: 0.75em;
       color: var(--text-muted);
-      margin-top: -8px;
+      margin-top: -6px;
       margin-bottom: 10px;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 15px;
+      gap: 12px;
     }
-
-    /* Scan / Selector Header Toolbar */
-    .toolbar-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .scan-btn {
-      background-color: var(--text-muted);
-      color: white;
-      height: 42px;
-      padding: 0 16px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1.1em;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .scan-btn:hover { background-color: #5a6268; }
 
     /* Action Buttons */
     .action-btns {
       display: flex;
-      gap: 15px;
-      margin-top: 25px;
+      gap: 12px;
+      margin-top: 22px;
     }
     .btn-submit {
       background-color: var(--danger);
       color: white;
       padding: 12px;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 1em;
+      font-size: 0.98em;
       width: 70%;
-      font-weight: bold;
-      transition: background-color 0.2s;
+      font-weight: 700;
+      transition: background 0.2s;
     }
     .btn-submit:hover { background-color: #bd2130; }
     .btn-cancel {
@@ -275,30 +350,28 @@
       color: white;
       padding: 12px;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 1em;
+      font-size: 0.98em;
       width: 30%;
+      font-weight: 600;
       text-align: center;
-      text-decoration: none;
-      box-sizing: border-box;
-      display: inline-block;
-      line-height: normal;
     }
     .btn-cancel:hover { background-color: #5a6268; }
 
     #message-area {
-      margin-top: 20px;
+      margin-top: 16px;
       padding: 12px;
-      border-radius: 4px;
+      border-radius: 5px;
       text-align: center;
       display: none;
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 0.9em;
     }
-    .error { background-color: #ffe6e6; color: red; border: 1px solid red; }
+    .error { background-color: #ffe6e6; color: #dc3545; border: 1px solid #f5c6cb; }
     .success { background-color: #e6ffed; color: #155724; border: 1px solid #c3e6cb; }
 
-    /* Modal for QR Scanner */
+    /* Modals */
     .modal {
       display: none;
       position: fixed;
@@ -308,17 +381,17 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0,0,0,0.7);
     }
     .modal-content {
-      background-color: #fefefe;
-      margin: 10% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 85%;
-      max-width: 440px;
+      background-color: #ffffff;
+      margin: 15% auto;
+      padding: 22px 18px;
       border-radius: 8px;
+      width: 90%;
+      max-width: 440px;
       text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     }
     .close-btn {
       color: #aaa;
@@ -326,11 +399,64 @@
       font-size: 26px;
       font-weight: bold;
       cursor: pointer;
+      line-height: 1;
     }
     .close-btn:hover { color: #000; }
 
+    /* Notice Confirmation Modal */
+    .prompt-icon {
+      font-size: 3em;
+      margin-bottom: 8px;
+    }
+    .prompt-title {
+      font-size: 1.15em;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .prompt-instruction-en {
+      font-size: 0.96em;
+      color: #1e293b;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .prompt-instruction-my {
+      font-size: 0.88em;
+      color: #64748b;
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+    .prompt-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-prompt-confirm {
+      flex: 1;
+      background: var(--danger);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95em;
+      cursor: pointer;
+    }
+    .btn-prompt-cancel {
+      flex: 1;
+      background: #e2e8f0;
+      color: #334155;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95em;
+      cursor: pointer;
+    }
+
     .footer {
-      margin-top: 40px;
+      margin-top: 35px;
       padding-top: 15px;
       border-top: 1px solid var(--border);
       font-size: 0.8em;
@@ -338,15 +464,30 @@
       text-align: center;
     }
 
+    /* Mobile Adaptations */
     @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 18px 14px;
+      }
       .asset-split-row {
         grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
       }
       .details-grid {
         grid-template-columns: 1fr;
       }
-      .grid-2 {
-        grid-template-columns: 1fr;
+      .action-btns {
+        flex-direction: column;
+      }
+      .btn-submit, .btn-cancel {
+        width: 100%;
       }
     }
   </style>
@@ -358,28 +499,35 @@
   <!-- Header -->
   <div class="header">
     <img src="https://lh3.googleusercontent.com/d/1tCDAMimy_b0x9kRmWNyYMn4voR9Ynr0J" alt="SGH Logo">
-    <h1>Haemodialysis &amp; Portable RO</h1>
+    <h1>Haemodialysis &amp; Portable RO Hub</h1>
     <h2>Haemodialysis Unit, Sarawak General Hospital</h2>
   </div>
 
-  <!-- Asset Selector / Scan Bar -->
-  <div class="toolbar-grid">
-    <div>
-      <select id="assetSelector" onchange="onAssetDropdownSelect(this.value)">
-        <option value="" disabled selected>Loading asset catalogue...</option>
+  <!-- Search Section: Hidden if arriving from direct QR scan (?id=...) -->
+  <div class="search-section" id="searchSection">
+    <label class="search-label">Search Machine</label>
+    <div class="search-row">
+      <select id="assetSelector" class="search-dropdown" onchange="onAssetDropdownSelect(this.value)">
+        <option value="" disabled selected>Loading machine list...</option>
       </select>
+      <button type="button" class="scan-btn" onclick="startScanner()" title="Scan Machine QR Code">📷 Scan</button>
     </div>
-    <button type="button" class="scan-btn" onclick="startScanner()" title="Scan Machine QR Code">📷 Scan QR</button>
+  </div>
+
+  <!-- Quick Toggle to Re-open Search when locked to a QR scan -->
+  <div class="switch-asset-bar" id="switchAssetBar" style="display: none;">
+    <span>Loaded via direct QR scan</span>
+    <span class="switch-asset-link" onclick="toggleSearchSection()">Switch / Search Another Machine</span>
   </div>
 
   <!-- Asset Details Split Row (70% Spec / 30% SNIDS) -->
   <div class="asset-split-row" id="assetDisplaySection" style="display: none;">
     
-    <!-- 70% Space: Machine Specifications -->
+    <!-- Machine Specifications -->
     <div class="asset-spec-card">
-      <div class="asset-spec-title">
-        <span id="cardAssetLabel">Asset Label</span>
-        <span id="cardAssetType" style="font-size: 0.8em; color: var(--text-muted); font-weight: normal;"></span>
+      <div class="asset-title-block">
+        <div class="asset-label-text" id="cardAssetLabel">Asset Label</div>
+        <div class="asset-type-badge" id="cardAssetType"></div>
       </div>
 
       <div class="details-grid">
@@ -409,21 +557,21 @@
         </div>
       </div>
 
-      <!-- Status & PPM -->
-      <div class="status-strip">
+      <!-- Stacked Status & Next PPM -->
+      <div class="status-stack">
         <div>
-          <b>Operational Status:</b><br>
+          <div class="status-group-label">Operational Status:</div>
           <span id="dispStatus" class="badge badge-ready">Checking...</span>
-          <div id="dispTicketInfo" style="font-size: 0.8em; color: var(--danger); margin-top: 3px; display: none;"></div>
+          <div id="dispTicketInfo" style="font-size: 0.82em; color: var(--danger); font-weight: 700; margin-top: 4px; display: none;"></div>
         </div>
-        <div style="text-align: right;">
-          <b>Next PPM Date:</b><br>
-          <span id="dispNextPpm" style="font-weight: bold; color: #1e293b;">-</span>
+        <div>
+          <div class="status-group-label">Next PPM Date:</div>
+          <div class="ppm-due-text" id="dispNextPpm">-</div>
         </div>
       </div>
     </div>
 
-    <!-- 30% Space: SNIDS Entry Dashboard Button -->
+    <!-- SNIDS Entry Dashboard Button -->
     <a href="https://script.google.com/macros/s/AKfycbwbfUFwkfyLrVP9FKmAqvCCkL65irXZbSUtgEaz30uHO6d9CRJHz6lbxhRCfkhsJ7sfkg/exec?page=entry" target="_blank" class="snids-card">
       <img src="https://lh3.googleusercontent.com/d/1NZ9oy_IiZcmG0vYT5ci48_1en-DhWYLk" alt="SNIDS Logo">
       <div class="snids-card-title">SNIDS Entry</div>
@@ -434,28 +582,28 @@
   </div>
 
   <!-- User Complaint Form -->
-  <form id="complaintForm" style="display: none;" onsubmit="submitComplaint(event)">
-    <h3>🚨 Log Breakdown / User Complaint</h3>
+  <form id="complaintForm" style="display: none;" onsubmit="handlePreSubmit(event)">
+    <h3>🚨 Log Breakdown</h3>
 
     <div class="grid-2">
       <div>
-        <label for="userName">Name of User *</label>
-        <input type="text" id="userName" required placeholder="Enter full name">
+        <label class="field-label" for="userName">Name of User *</label>
+        <input type="text" id="userName" required placeholder="Enter your full name">
       </div>
       <div>
-        <label for="userEmail">User E-mail *</label>
-        <input type="email" id="userEmail" required placeholder="name@moh.gov.my or gmail">
+        <label class="field-label" for="userEmail">User E-mail *</label>
+        <input type="email" id="userEmail" required placeholder="name@moh.gov.my or personal">
       </div>
     </div>
 
     <div class="grid-2">
       <div>
-        <label for="currentZone">Current Zone / Ward Location *</label>
-        <input type="text" id="currentZone" required placeholder="e.g. Ward 7, ICU, Acute Bay, HDU Main">
+        <label class="field-label" for="currentZone">Current Location *</label>
+        <input type="text" id="currentZone" required placeholder="e.g. Med 4, ICU, HDU">
       </div>
       <div>
-        <label for="faultCategory">Fault Category *</label>
-        <select id="faultCategory" required>
+        <label class="field-label" for="faultCategory">Fault Category *</label>
+        <select id="faultCategory" class="form-control" required>
           <option value="" disabled selected>-- Select Defect Category --</option>
           <optgroup label="Dialysate &amp; Hydraulics">
             <option value="Conductivity / Acid Concentration Alarm">Conductivity / Acid Concentration Alarm</option>
@@ -490,7 +638,7 @@
     </div>
 
     <div>
-      <label for="defectDescription">Fault Description (Max 200 chars) *</label>
+      <label class="field-label" for="defectDescription">Fault Description (Max 200 chars) *</label>
       <textarea id="defectDescription" maxlength="200" required placeholder="Describe alarm code, observable leak, or failure symptoms..." oninput="updateCharCount(this)"></textarea>
       <div class="char-counter" id="charCounter">0 / 200 characters</div>
     </div>
@@ -509,18 +657,32 @@
   </div>
 </div>
 
+<!-- Transfer Machine Confirmation Modal -->
+<div id="transferModal" class="modal">
+  <div class="modal-content">
+    <div class="prompt-icon">⚠️</div>
+    <div class="prompt-title">Equipment Transfer Required</div>
+    <div class="prompt-instruction-en">
+      Please transfer this machine to the <b>HDU Maintenance Bay</b> immediately for BEMS inspection.
+    </div>
+    <div class="prompt-actions">
+      <button type="button" class="btn-prompt-confirm" onclick="executeComplaintSubmission()">Proceed &amp; Submit</button>
+      <button type="button" class="btn-prompt-cancel" onclick="closeTransferModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <!-- QR Scanner Modal -->
 <div id="scannerModal" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="stopScanner()">&times;</span>
-    <h2 style="color: var(--primary); font-size: 1.3em;">Scan Machine QR Code</h2>
+    <h2 style="color: var(--primary); font-size: 1.25em; margin-bottom: 12px;">Scan Machine QR Code</h2>
     <div id="reader-modal" style="width: 100%;"></div>
     <p id="scan-status" style="font-size: 0.85em; color: gray; margin-top: 10px;">Position machine QR code within camera frame.</p>
   </div>
 </div>
 
 <script>
-  // DEPLOYED GOOGLE APPS SCRIPT URL
   const SCRIPT_API_URL = "https://script.google.com/macros/s/AKfycbxiGHd76lacVTCl7WmdQQphPzCbE25SoTiksAI1PeaH8YU01NC69radvnN-tQYcjtEk/exec";
 
   let fleetCatalogue = [];
@@ -528,15 +690,33 @@
   let html5QrCode = null;
 
   window.addEventListener("DOMContentLoaded", () => {
-    // Check if ?id= is present in URL (QR scan entry)
     const urlParams = new URLSearchParams(window.location.search);
     const targetAssetId = urlParams.get("id");
+
+    if (targetAssetId) {
+      // Arriving via direct QR code: Hide search bar by default
+      document.getElementById("searchSection").style.display = "none";
+      document.getElementById("switchAssetBar").style.display = "flex";
+    }
+
     initializePortal(targetAssetId);
   });
 
+  function toggleSearchSection() {
+    const section = document.getElementById("searchSection");
+    const bar = document.getElementById("switchAssetBar");
+    if (section.style.display === "none") {
+      section.style.display = "block";
+      bar.style.display = "none";
+    } else {
+      section.style.display = "none";
+      bar.style.display = "flex";
+    }
+  }
+
   function initializePortal(targetLabel) {
     const selector = document.getElementById("assetSelector");
-    selector.innerHTML = `<option value="" disabled selected>Loading asset fleet...</option>`;
+    selector.innerHTML = `<option value="" disabled selected>Loading machine list...</option>`;
 
     let fetchUrl = `${SCRIPT_API_URL}?action=getAssetMetadata`;
     if (targetLabel) {
@@ -548,13 +728,12 @@
       .then(res => {
         if (res.success) {
           fleetCatalogue = res.assets || [];
-          populateDropdown(fleetCatalogue);
+          populateCompactDropdown(fleetCatalogue);
 
           if (res.selectedAsset) {
             displayAssetProfile(res.selectedAsset, res.activeTicket, res.nextPpmDate);
             selector.value = res.selectedAsset.assetLabel;
           } else if (targetLabel) {
-            // Attempt case-insensitive match from assets array
             const matched = fleetCatalogue.find(a => a.assetLabel.toLowerCase() === targetLabel.trim().toLowerCase());
             if (matched) {
               onAssetDropdownSelect(matched.assetLabel);
@@ -570,15 +749,15 @@
       });
   }
 
-  function populateDropdown(assets) {
+  // Populate Dropdown with ONLY the Asset Label (HD 01, P-RO 01)
+  function populateCompactDropdown(assets) {
     const selector = document.getElementById("assetSelector");
-    selector.innerHTML = `<option value="" disabled selected>-- Select Asset (HD / Portable RO) --</option>`;
+    selector.innerHTML = `<option value="" disabled selected>-- Select Machine --</option>`;
     
-    // Sort logically
     assets.forEach(item => {
       const opt = document.createElement("option");
       opt.value = item.assetLabel;
-      opt.textContent = `${item.assetLabel} - ${item.brandModel} (ASIS: ${item.asisNo || 'N/A'})`;
+      opt.textContent = item.assetLabel; // Compact text: fits on all phones
       selector.appendChild(opt);
     });
   }
@@ -586,7 +765,6 @@
   function onAssetDropdownSelect(assetLabel) {
     if (!assetLabel) return;
     
-    // Fetch live metadata for selected machine
     fetch(`${SCRIPT_API_URL}?action=lookupAsset&query=${encodeURIComponent(assetLabel)}`)
       .then(res => res.json())
       .then(res => {
@@ -601,6 +779,33 @@
       });
   }
 
+  // Format date to DD MMMM YYYY (e.g., 15 December 2026)
+  function formatLongDate(dateInput) {
+    if (!dateInput || dateInput === "-" || dateInput === "") return "-";
+    
+    // Check if it's already in dd/MM/yyyy format
+    let dateObj;
+    if (typeof dateInput === "string" && dateInput.includes("/")) {
+      const parts = dateInput.split("/");
+      if (parts.length === 3) {
+        dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
+      }
+    } else {
+      dateObj = new Date(dateInput);
+    }
+
+    if (!dateObj || isNaN(dateObj.getTime())) return dateInput;
+
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const month = months[dateObj.getMonth()];
+    const year = dateObj.getFullYear();
+    return `${day} ${month} ${year}`;
+  }
+
   function displayAssetProfile(asset, activeTicket, nextPpmDate) {
     currentAsset = asset;
 
@@ -612,7 +817,7 @@
     document.getElementById("dispSerial").textContent = asset.serialNo || "-";
     document.getElementById("dispYear").textContent = asset.yearOfMade || "-";
     document.getElementById("dispRemarks").textContent = asset.remarks || "-";
-    document.getElementById("dispNextPpm").textContent = nextPpmDate || "-";
+    document.getElementById("dispNextPpm").textContent = formatLongDate(nextPpmDate);
 
     const statusBadge = document.getElementById("dispStatus");
     const ticketInfo = document.getElementById("dispTicketInfo");
@@ -636,12 +841,23 @@
     document.getElementById("charCounter").textContent = `${textarea.value.length} / 200 characters`;
   }
 
-  function submitComplaint(e) {
+  // Step 1: Intercept Submit and Show Transfer Machine Warning Modal
+  function handlePreSubmit(e) {
     e.preventDefault();
     if (!currentAsset) {
       alert("Please select or scan an asset first.");
       return;
     }
+    document.getElementById("transferModal").style.display = "block";
+  }
+
+  function closeTransferModal() {
+    document.getElementById("transferModal").style.display = "none";
+  }
+
+  // Step 2: Final Submission Execution
+  function executeComplaintSubmission() {
+    closeTransferModal();
 
     const payload = {
       assetLabel: currentAsset.assetLabel,
@@ -670,7 +886,6 @@
 
       if (res.success) {
         showMessage(`Complaint lodged successfully! Ticket #${res.ticketId} dispatched to BEMS In-charge.`, "success");
-        // Update live badge immediately
         document.getElementById("dispStatus").className = "badge badge-fault";
         document.getElementById("dispStatus").textContent = "Defect Reported (Pending BEMS)";
         document.getElementById("dispTicketInfo").textContent = `Ticket ID: ${res.ticketId}`;
@@ -701,7 +916,7 @@
     area.style.display = "block";
   }
 
-  /* Robust QR Camera Scanner */
+  /* Camera Scanner Routine */
   function startScanner() {
     document.getElementById("scannerModal").style.display = "block";
     document.getElementById("scan-status").textContent = "Accessing camera...";
@@ -755,13 +970,11 @@
     playBeep();
 
     let assetQuery = decodedText.trim();
-    // Parse URL if QR contains full link
     if (assetQuery.includes("?id=")) {
       const match = assetQuery.match(/[?&]id=([^&]+)/);
       if (match) assetQuery = decodeURIComponent(match[1]);
     }
 
-    // Match in catalogue or lookup via API
     const matched = fleetCatalogue.find(a => 
       a.assetLabel.toLowerCase() === assetQuery.toLowerCase() || 
       (a.asisNo && a.asisNo.toLowerCase() === assetQuery.toLowerCase())
