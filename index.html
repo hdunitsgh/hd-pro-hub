@@ -132,25 +132,6 @@
       background-color: #334155;
     }
 
-    /* Switch asset link (shown when search is hidden) */
-    .switch-asset-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.85em;
-      margin-bottom: 15px;
-      padding: 6px 12px;
-      background: #f8fafc;
-      border-radius: 4px;
-      border: 1px solid var(--border-light);
-    }
-    .switch-asset-link {
-      color: var(--primary);
-      text-decoration: underline;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
     /* Asset Split Grid */
     .asset-split-row {
       display: grid;
@@ -514,12 +495,6 @@
     </div>
   </div>
 
-  <!-- Quick Toggle to Re-open Search when locked to a QR scan -->
-  <div class="switch-asset-bar" id="switchAssetBar" style="display: none;">
-    <span>Loaded via direct QR scan</span>
-    <span class="switch-asset-link" onclick="toggleSearchSection()">Switch / Search Another Machine</span>
-  </div>
-
   <!-- Asset Details Split Row (70% Spec / 30% SNIDS) -->
   <div class="asset-split-row" id="assetDisplaySection" style="display: none;">
     
@@ -694,25 +669,12 @@
     const targetAssetId = urlParams.get("id");
 
     if (targetAssetId) {
-      // Arriving via direct QR code: Hide search bar by default
+      // Arriving via direct QR code: Hide search bar completely
       document.getElementById("searchSection").style.display = "none";
-      document.getElementById("switchAssetBar").style.display = "flex";
     }
 
     initializePortal(targetAssetId);
   });
-
-  function toggleSearchSection() {
-    const section = document.getElementById("searchSection");
-    const bar = document.getElementById("switchAssetBar");
-    if (section.style.display === "none") {
-      section.style.display = "block";
-      bar.style.display = "none";
-    } else {
-      section.style.display = "none";
-      bar.style.display = "flex";
-    }
-  }
 
   function initializePortal(targetLabel) {
     const selector = document.getElementById("assetSelector");
